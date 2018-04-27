@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import { Header, Card, Button, ButtonGroup } from 'react-native-elements'
+import { StyleSheet, View, ScrollView } from 'react-native'
+import { Header, Card, Button, ButtonGroup, Avatar, Text } from 'react-native-elements'
 import { Font } from 'expo'
 
 export default class App extends React.Component {
@@ -34,6 +34,7 @@ export default class App extends React.Component {
     return !!this.state.fontLoaded ? (
       <View style={styles.container}>
         
+        {/* HEADER */}
         <View>
           <Header
             leftComponent={{ icon: 'menu', color: '#fff' }}
@@ -48,7 +49,28 @@ export default class App extends React.Component {
               />
         </View>
 
+        {/* BODY */}
         <ScrollView style={{flex: 1 /* Set Scrollview to 100% height */}}>
+          
+          <View style={{
+            marginLeft: 15,
+            marginTop: 10,
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center'
+          }}>
+            <Avatar
+              large
+              title="GD"
+              onPress={() => console.log("Works!")}
+              activeOpacity={0.7}
+            />
+            <Text h3
+              style={{
+                marginLeft: 10
+              }}>Glenn Dimaliwat</Text>
+          </View>
+
           <Card
             title='HELLO WORLD'
             image={require('./assets/images/frenchie-small.jpg')}>
@@ -94,6 +116,8 @@ export default class App extends React.Component {
               onPress={() => { console.log('View Now Pressed') }} />
           </Card>
         </ScrollView>
+
+        {/* FOOTER */}
         <View style={{height: 50}}>
           <ButtonGroup
             onPress={this.updateIndex.bind(this)}
