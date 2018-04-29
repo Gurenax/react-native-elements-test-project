@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, ScrollView } from 'react-native'
-import { Header, Card, Button, ButtonGroup, Avatar, Text } from 'react-native-elements'
+import { Header, Card, Button, ButtonGroup, Avatar, Text, ListItem } from 'react-native-elements'
 import { Font } from 'expo'
 
 export default class App extends React.Component {
@@ -29,6 +29,30 @@ export default class App extends React.Component {
 
   render() {
     const buttons = ['Menu 1', 'Menu 2', 'Menu 3']
+    const list = [
+      {
+        title: 'Appointments',
+        icon: 'av-timer'
+      },
+      {
+        title: 'Trips',
+        icon: 'flight-takeoff'
+      },
+      {
+        title: 'Passwords',
+        icon: 'fingerprint'
+      },
+      {
+        title: 'Pitches',
+        icon: 'lightbulb-outline'
+      },
+      {
+        title: 'Updates',
+        icon: 'update'
+      }
+      
+    ]
+    
     const { selectedIndex } = this.state
 
     return !!this.state.fontLoaded ? (
@@ -52,6 +76,7 @@ export default class App extends React.Component {
         {/* BODY */}
         <ScrollView style={{flex: 1 /* Set Scrollview to 100% height */}}>
           
+          {/* Avatar and Name */}
           <View style={{
             marginLeft: 15,
             marginTop: 10,
@@ -71,6 +96,19 @@ export default class App extends React.Component {
               }}>Glenn Dimaliwat</Text>
           </View>
 
+          {/* List */}
+          <View style={{ marginTop: 10 }}>
+            {
+              list.map((item, i) => (
+                <ListItem
+                  key={i}
+                  title={item.title}
+                  leftIcon={{ name: item.icon }}
+                />
+              ))
+            }
+          </View>
+          
           <Card
             title='HELLO WORLD'
             image={require('./assets/images/frenchie-small.jpg')}>
